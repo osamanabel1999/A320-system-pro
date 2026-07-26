@@ -77,5 +77,7 @@
 		</array>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>This app requires access to the photo library to allow users to upload or save images.</string>
 </dict>
 </plist>
