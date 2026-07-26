@@ -81,20 +81,13 @@ class _HomeeePageWidgetState extends State<HomeeePageWidget> {
                   ),
                 ),
               ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-                tabletLandscape: false,
-                desktop: false,
-              ))
-                FlutterFlowAdBanner(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 50.0,
-                  showsTestAd: false,
-                  iOSAdUnitID: 'ca-app-pub-7880697829268273/8460472732',
-                  androidAdUnitID: 'ca-app-pub-7880697829268273/8136084814',
-                ),
+              FlutterFlowAdBanner(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: 50.0,
+                showsTestAd: false,
+                iOSAdUnitID: 'ca-app-pub-7880697829268273/8460472732',
+                androidAdUnitID: 'ca-app-pub-7880697829268273/8136084814',
+              ),
             ],
           ),
         ),
