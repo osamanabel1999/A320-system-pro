@@ -98,6 +98,8 @@ dependency_overrides:
   http: 1.4.0
   intl: 0.20.2
   uuid: ^4.0.0
+  font_awesome_flutter: ^10.8.0
+  page_transition: ^2.1.1
 
 dev_dependencies:
   flutter_launcher_icons: 0.13.1
@@ -107,7 +109,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter_launcher_icons:
   android: 'launcher_icon'
   ios: true
@@ -116,7 +117,6 @@ flutter_launcher_icons:
   image_path: 'assets/images/app_launcher_icon.png'
   adaptive_icon_background: '#00000000'
   adaptive_icon_foreground: 'assets/images/adaptive_foreground_icon.png'
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -138,8 +138,6 @@ flutter:
     - assets/rive_animations/
     - assets/pdfs/
     - assets/jsons/
-
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -166,4 +164,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
