@@ -124,11 +124,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => BreifLDGWidget(),
         ),
         FFRoute(
-          name: PerformanceWidget.routeName,
-          path: PerformanceWidget.routePath,
-          builder: (context, params) => PerformanceWidget(),
-        ),
-        FFRoute(
           name: HomeeePageWidget.routeName,
           path: HomeeePageWidget.routePath,
           builder: (context, params) => HomeeePageWidget(),

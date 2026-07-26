@@ -47,7 +47,7 @@ class _ExamWidgetState extends State<ExamWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          backgroundColor: Color(0xFF0A192F),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -64,7 +64,7 @@ class _ExamWidgetState extends State<ExamWidget> {
             },
           ),
           title: Text(
-            'Page Title',
+            'A320 EXAM',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:

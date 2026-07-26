@@ -14,7 +14,6 @@ class A320InstructorHomeWidget extends StatefulWidget {
     this.onSystemLimitationsTap,
     this.onSystemsArchitectureTap,
     this.onTechnicalNotesTap,
-    this.onPerformanceTheoryTap,
     this.onDispatchCalculatorTap,
     this.onInteractiveFlightDeckTap,
     this.onPanelFamiliarizationTap,
@@ -24,11 +23,10 @@ class A320InstructorHomeWidget extends StatefulWidget {
   final double? width;
   final double? height;
 
-  // تعريف أكشن منفصل لكل زرار ليظهر في FlutterFlow
+  // تم حذف onPerformanceTheoryTap بالكامل
   final Future<dynamic> Function()? onSystemLimitationsTap;
   final Future<dynamic> Function()? onSystemsArchitectureTap;
   final Future<dynamic> Function()? onTechnicalNotesTap;
-  final Future<dynamic> Function()? onPerformanceTheoryTap;
   final Future<dynamic> Function()? onDispatchCalculatorTap;
   final Future<dynamic> Function()? onInteractiveFlightDeckTap;
   final Future<dynamic> Function()? onPanelFamiliarizationTap;
@@ -48,50 +46,6 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
     const Color accentColor = Color(0xFF38BDF8);
     const Color textColor = Colors.white;
 
-    // قائمة الأزرار وربطها بالـ Parameters الممررة للويدجت
-    final List<Map<String, dynamic>> menuItems = [
-      {
-        'title': 'System Limitations',
-        'icon': Icons.warning_amber_rounded,
-        'action': widget.onSystemLimitationsTap,
-      },
-      {
-        'title': 'Visual Systems Guide',
-        'icon': Icons.account_tree_outlined,
-        'action': widget.onSystemsArchitectureTap,
-      },
-      {
-        'title': 'Systems Study Guide',
-        'icon': Icons.menu_book_rounded,
-        'action': widget.onTechnicalNotesTap,
-      },
-      {
-        'title': 'Performance Calculator',
-        'icon': Icons.flight_takeoff_rounded,
-        'action': widget.onPerformanceTheoryTap,
-      },
-      {
-        'title': 'Takeoff & Landing Briefs',
-        'icon': Icons.calculate_outlined,
-        'action': widget.onDispatchCalculatorTap,
-      },
-      {
-        'title': 'Virtual Flight Deck Trainer',
-        'icon': Icons.dashboard_customize_outlined,
-        'action': widget.onInteractiveFlightDeckTap,
-      },
-      {
-        'title': 'Cockpit Overview',
-        'icon': Icons.view_quilt_rounded,
-        'action': widget.onPanelFamiliarizationTap,
-      },
-      {
-        'title': 'Type Rating Exam',
-        'icon': Icons.fact_check_outlined,
-        'action': widget.onProficiencyExamTap,
-      },
-    ];
-
     return Container(
       width: widget.width,
       height: widget.height,
@@ -102,8 +56,7 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
           children: [
             // --- Header Section ---
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
+              padding: const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -129,7 +82,7 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
                             "Welcome to",
                             style: TextStyle(
                               color: Colors.white70,
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -137,7 +90,7 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
                             "A320 Instructor",
                             style: TextStyle(
                               color: textColor,
-                              fontSize: 26,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
                               letterSpacing: 1.0,
                             ),
@@ -151,40 +104,114 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
                     "Select a module to begin your training session.",
                     style: TextStyle(
                       color: Colors.white54,
-                      fontSize: 14,
+                      fontSize: 13,
                     ),
                   ),
                 ],
               ),
             ),
 
-            // --- Grid Section ---
+            // --- Grid Section (Responsive Layout Without Scroll) ---
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 1.0,
-                  ),
-                  itemCount: menuItems.length,
-                  itemBuilder: (context, index) {
-                    return _buildMenuCard(
-                      title: menuItems[index]['title'],
-                      icon: menuItems[index]['icon'],
-                      cardColor: cardColor,
-                      accentColor: accentColor,
-                      onTap: () async {
-                        // تنفيذ الأكشن الخاص بكل زرار
-                        if (menuItems[index]['action'] != null) {
-                          await menuItems[index]['action']!();
-                        }
-                      },
-                    );
-                  },
+                padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+                child: Column(
+                  children: [
+                    // الصف الأول
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'System Limitations',
+                              icon: Icons.warning_amber_rounded,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onSystemLimitationsTap,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'Visual Systems Guide',
+                              icon: Icons.account_tree_outlined,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onSystemsArchitectureTap,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // الصف الثاني
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'Systems Study Guide',
+                              icon: Icons.menu_book_rounded,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onTechnicalNotesTap,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'Takeoff & Landing Briefs',
+                              icon: Icons.calculate_outlined,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onDispatchCalculatorTap,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // الصف الثالث
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'Virtual Flight Deck Trainer',
+                              icon: Icons.dashboard_customize_outlined,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onInteractiveFlightDeckTap,
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: _buildMenuCard(
+                              title: 'Cockpit Overview',
+                              icon: Icons.view_quilt_rounded,
+                              cardColor: cardColor,
+                              accentColor: accentColor,
+                              onTap: widget.onPanelFamiliarizationTap,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+
+                    // الصف الرابع (زرار عريض بعرض الشاشة)
+                    Expanded(
+                      child: _buildMenuCard(
+                        title: 'Type Rating Exam',
+                        icon: Icons.fact_check_outlined,
+                        cardColor: cardColor,
+                        accentColor: accentColor,
+                        onTap: widget.onProficiencyExamTap,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -199,7 +226,7 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
     required IconData icon,
     required Color cardColor,
     required Color accentColor,
-    required Future<dynamic> Function()? onTap, // تم تعديل النوع هنا
+    required Future<dynamic> Function()? onTap,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -225,9 +252,14 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
             borderRadius: BorderRadius.circular(20),
             splashColor: accentColor.withOpacity(0.1),
             highlightColor: accentColor.withOpacity(0.05),
-            onTap: onTap,
+            onTap: () async {
+              if (onTap != null) {
+                await onTap();
+              }
+            },
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -241,16 +273,16 @@ class _A320InstructorHomeWidgetState extends State<A320InstructorHomeWidget> {
                     child: Icon(
                       icon,
                       color: accentColor,
-                      size: 32,
+                      size: 28, // صغرت الأيقونة شوية عشان تناسب الشاشات الأصغر
                     ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 12),
                   Text(
                     title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 14, // صغرت الخط درجة عشان مايحصلش Overflow
                       fontWeight: FontWeight.w600,
                       height: 1.2,
                     ),

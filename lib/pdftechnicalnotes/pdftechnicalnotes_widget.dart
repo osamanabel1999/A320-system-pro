@@ -64,7 +64,7 @@ class _PdftechnicalnotesWidgetState extends State<PdftechnicalnotesWidget> {
             },
           ),
           title: Text(
-            'Page Title',
+            'A320 SYSTEM',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:

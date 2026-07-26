@@ -13,6 +13,5 @@ export '/limition/limition_widget.dart' show LimitionWidget;
 export '/limition_m_e_n_u/limition_m_e_n_u_widget.dart' show LimitionMENUWidget;
 export '/breif_t_o/breif_t_o_widget.dart' show BreifTOWidget;
 export '/breif_l_d_g/breif_l_d_g_widget.dart' show BreifLDGWidget;
-export '/performance/performance_widget.dart' show PerformanceWidget;
 export '/homeee_page/homeee_page_widget.dart' show HomeeePageWidget;
 export '/breifing_m_e_n_u/breifing_m_e_n_u_widget.dart' show BreifingMENUWidget;

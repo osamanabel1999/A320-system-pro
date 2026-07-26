@@ -66,9 +66,6 @@ class _HomeeePageWidgetState extends State<HomeeePageWidget> {
                     onTechnicalNotesTap: () async {
                       context.pushNamed(PdftechnicalnotesWidget.routeName);
                     },
-                    onPerformanceTheoryTap: () async {
-                      context.pushNamed(PerformanceWidget.routeName);
-                    },
                     onDispatchCalculatorTap: () async {
                       context.pushNamed(BreifingMENUWidget.routeName);
                     },
